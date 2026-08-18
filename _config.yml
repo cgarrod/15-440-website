@@ -171,13 +171,13 @@ course:
           type: Instructor
           url: https://s3d.cmu.edu/people/core-faculty/titzer-ben.html
           image: titzer.png
-          email: btitzer@andrew.cmu.edu          
-
-    ta:
+          email: btitzer@andrew.cmu.edu
         - name: Aditya Chanana
           email: achanana@andrew.cmu.edu
-          type: TA
+          type: Lead TA
           image: achanana.jpg
+
+    ta:
         - name: Alejandro Estrada
           email: alejande@andrew.cmu.edu
           type: TA
