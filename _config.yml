@@ -61,7 +61,7 @@ course:
     semester: Fall 2026
     time: Tue/Thu 11:00-12:20 in CUC MCCNMY
     venue:
-    edstem: &es 'https://edstem.org/us/courses/84244/discussion'
+    edstem: &es 'https://edstem.org/us/courses/102065'
     gradescope: &gs 'https://www.gradescope.com/courses/1352034'
     pollev: &pe 'https://pollev.com/cmu15440'
     queuestatus:
