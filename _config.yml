@@ -29,7 +29,7 @@ doks:
             logo:
                 text:
                 image:
-            copyright: Copyright &copy; 2025. Carnegie Mellon University <br>All rights reserved.
+            copyright: Copyright &copy; 2026. Carnegie Mellon University <br>All rights reserved.
         social_list:
             # - network_name: facebook
             #   profile_url: '#'
@@ -58,15 +58,15 @@ permalink: /:title/
 
 # Course logistics
 course:
-    semester: Fall 2025
+    semester: Fall 2026
     time: Tue/Thu 11:00-12:20 in CUC MCCNMY
     venue:
     edstem: &es 'https://edstem.org/us/courses/84244/discussion'
-    gradescope: &gs 'https://www.gradescope.com/courses/1099007'
+    gradescope: &gs 'https://www.gradescope.com/courses/1352034'
     pollev: &pe 'https://pollev.com/cmu15440'
     queuestatus:
         url: &qs 'https://ohq.eberly.cmu.edu/#/'
-        name: '15-440 (Fall 2025)'
+        name: '15-440 (Fall 2026)'
     canvas: 'https://canvas.cmu.edu/'
     project_timeline:
         proposal: 2020-04-22T23:59:00-07:00
@@ -157,20 +157,21 @@ course:
             external_url: true
 
     staff:
-        - name: Heather Miller
+        - name: Charlie Garrod
           type: Instructor
-          url: https://heather.miller.am
-          image: heather.jpg
-          email: heather.miller@cs.cmu.edu
-        - name: Wenting Zheng
+          url: https://www.cs.cmu.edu/~charlie/
+          image: charlie.jpg
+          email: charlie@cs.cmu.edu
+        - name: Yuvraj Agarwal
           type: Instructor
-          url: https://wzheng.github.io/
-          image: wenting.jpg
-          email: wenting@cmu.edu
-        - name: Elizabeth Gilbert
-          email: evgilber@andrew.cmu.edu
-          type: Head TA
-          image: elizabethg.jpg          
+          url: https://www.synergylabs.org/yuvraj/
+          image: yuvraj.jpg
+          email: yuvraj@cs.cmu.edu
+        - name: Ben Titzer
+          type: Instructor
+          url: https://s3d.cmu.edu/people/core-faculty/titzer-ben.html
+          image: titzer.png
+          email: btitzer@andrew.cmu.edu          
 
     ta:
         - name: Aditri Gupta
