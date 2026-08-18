@@ -1,69 +1,58 @@
-# This is a basic workflow to help you get started with Actions
-
+# Workflow for building and deploying Jekyll site to GitHub Pages
 name: deploy
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  # This workflow contains a single job called "build"
-  build-deploy:
-    # The type of runner that the job will run on
+  # Build job
+  build:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: set up ruby
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
-    # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+          cache-version: 0
 
-      with:
-        ruby-version: 2.6
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
-    - name: install dependencies
-      run: bundle install
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
 
-    - name: build site with jekyll
-      run: bundle exec jekyll build --baseurl "/15-440/fa2025"
-      env:
-        JEKYLL_ENV: production
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
 
-    - name: deploy to compsys
-      uses: AEnterprise/rsync-deploy@v1.0.2
-      env:
-        DEPLOY_KEY: ${{ secrets.COMPSYS_SERVER_SSH_KEY }}
-        ARGS: "-e -c -r -t -z -h --progress"
-        SERVER_PORT: ${{ secrets.COMPSYS_SERVER_PORT }}
-        FOLDER: "_site/"
-        SERVER_IP: ${{ secrets.COMPSYS_SERVER_IP }}
-        USERNAME: ${{ secrets.COMPSYS_USERNAME }}
-        SERVER_DESTINATION: ${{ secrets.COMPSYS_SERVER_DESTINATION }}
-
-#     - name: install kerberos client
-#       run: sudo apt-get install krb5-user
-
-#     - name: get kerberos ticket
-#       run: echo '${{ secrets.UNI_PASS }}' | kinit ${{ secrets.UNI_USER }}@${{ secrets.UNI_HOST }}
-
-#     - name: deploy to uni
-#       uses: AEnterprise/rsync-deploy@06168fb
-#       env:
-#         DEPLOY_KEY: ${{ secrets.UNI_SERVER_SSH_KEY }}
-#         ARGS: "-e -c -r -t -z -h -K -vv --progress"
-#         SERVER_PORT: ${{ secrets.UNI_SERVER_PORT }}
-#         FOLDER: "_site/"
-#         SERVER_IP: ${{ secrets.UNI_SERVER_IP }}
-#         USERNAME: ${{ secrets.UNI_USERNAME }}
-#         SERVER_DESTINATION: ${{ secrets.UNI_SERVER_DESTINATION }}
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

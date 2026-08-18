@@ -1,13 +1,12 @@
 # Website for the CMU 15-440 Distributed Systems course
 
-![deploy](https://github.com/15-440/website/workflows/deploy/badge.svg)
+![deploy](https://github.com/15-440/website/actions/workflows/deploy.yml/badge.svg)
 
-Static site using Jekyll. Built and deployed with Github Actions.
+Static site using Jekyll. Built and deployed with GitHub Actions to GitHub Pages.
 
 ## To run locally:
 
 ```shell
-# Uncomment gem commands in Gemfile, then:
 bundle install
-buncle exec jekyll serve
+bundle exec jekyll serve
 ```

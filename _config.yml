@@ -1,8 +1,9 @@
-baseurl: ""
+url: "https://15-440.github.io"
+baseurl: "/website"
 
 # Theme settings
 doks:
-    baseurl: "/15-440/fa2025/"
+    baseurl: "/website"
     color_theme: # Available themes: blue (default), green, purple, red and yellow
     header:
         logo:
@@ -239,7 +240,7 @@ course:
         - name: Tanisha Mehta
           email: tsmehta@andrew.cmu.edu
           type: TA
-          image: tsmehta.jpg
+          image: silhouette.png
         - name: Varshini Subramanian
           email: varshins@andrew.cmu.edu
           type: TA
