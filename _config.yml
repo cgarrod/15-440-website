@@ -165,7 +165,7 @@ course:
         - name: Yuvraj Agarwal
           type: Instructor
           url: https://www.synergylabs.org/yuvraj/
-          image: yuvraj.jpg
+          image: yuvraj.png
           email: yuvraj@cs.cmu.edu
         - name: Ben Titzer
           type: Instructor
